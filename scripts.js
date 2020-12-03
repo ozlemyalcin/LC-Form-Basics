@@ -76,34 +76,24 @@ function init() {
     }
 
     // Non-form click events
-    document.addEventListener("click", function(event) {
+    // Add click event for:
 
-        if (event.target.id === "go-to-form") {
-            create.style.visibility = "hidden";
-            newEntry.style.visibility = "visible";
-            event.preventDefault(); // ensure this is the only button registering for the click
-        }
+    // go-to-form button
+    //  - Hide container of go-to-form
+    //  - Show container of add and cancel buttons
 
-        if (event.target.id === "cancel") {
-            create.style.visibility = "visible";
-            newEntry.style.visibility = "hidden";
-            event.preventDefault(); // ensure this is the only button registering for the click
-        }
 
-        if (event.target.id === "submit") {
-             // Validate no empty inputs
-            if (day.value === "" || category.value === "" || activity.value === "") {
-                alert("All fields required to create a new entry.")
-                console.log("not all fields are valid");  
-            } else {
-                addNewEntry();
-                clearForm();
-                create.style.visibility = "visible";
-                newEntry.style.visibility = "hidden";
-            }
-            event.preventDefault(); // prevent page from reloading
-        }
+    // cancel button
+    //  - Show container of go-to-form
+    //  - Hide container of add and cancel
 
-    });
+
+
+    // submit button
+    //  - Validate form
+    //  - Call addNewEntry()
+    //  - Call clearForm()
+    //  - Show container of go-to-form
+    //  - Hide container of add and cancel
 
 }
