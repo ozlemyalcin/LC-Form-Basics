@@ -52,6 +52,12 @@ function init() {
     let newEntry = document.getElementById("new-entry");
     let form = document.getElementById("form");
 
+    let goToForm=document.getElementById("go-to-form");
+    //submit
+    let submit = document.getElementById("submit");
+    //cancel
+    let cancel = document.getElementById("cancel");
+
     function addNewEntry() {
         // Store data
         let newEntry = new Entry(day.value, category.value, activity.value);
@@ -80,20 +86,47 @@ function init() {
 
     // go-to-form button
     //  - Hide container of go-to-form
-    //  - Show container of add and cancel buttons
+    //  - Show container of add and cancel buttons-new-entry section
+    goToForm.addEventListener("click",function(event){
+        create.style.visibility = "hidden";
+        newEntry.style.visibility="visible"; 
+        event.preventDefault();
+
+
+
+    });
 
 
     // cancel button
     //  - Show container of go-to-form
     //  - Hide container of add and cancel
-
+    cancel.addEventListener("click",function(event){
+        create.style.visibility="visible";
+        newEntry.style.visibility="hidden";
+        event.preventDefault();
+    });
 
 
     // submit button
     //  - Validate form
+    //     -querySelector("input[name=activity").value !==""
     //  - Call addNewEntry()
     //  - Call clearForm()
     //  - Show container of go-to-form
     //  - Hide container of add and cancel
+    submit.addEventListener("click",function(event){
+        if (day.value ==="" || category.value ==="" || activity.value ===""){
+            alert("Fill out all fields");
+            clearForm();
+        }else{
+            addNewEntry();
+            clearForm();
+            create.style.visibility="visible";
+            newEntry.style.visibility="hidden";
+        }
+        event.preventDefault();
+
+    });
+  
 
 }
